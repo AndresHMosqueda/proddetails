@@ -69,6 +69,7 @@ const App = () => {
                   alt="img"
                   key={indx}
                   onClick={() => handleTab(indx)}
+                  onMouseOver={() => handleTab(indx)}
                 />
               ))}
             </div>
