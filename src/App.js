@@ -3,6 +3,7 @@ import "./App.css";
 
 const App = () => {
   const myRef = useRef();
+  const [activeIndex, setActiveIndex] = useState(0);
   const [state, setState] = useState({
     products: [
       {
@@ -33,6 +34,7 @@ const App = () => {
 
   const handleTab = (index) => {
     setState({ products, index: index });
+    setActiveIndex(index);
     const images = myRef.current.children;
     console.log("imgs", images);
     for (let i = 0; i < images.length; i++) {
@@ -46,9 +48,10 @@ const App = () => {
       {state.products.map((item) => (
         <div className="details" key={item._id}>
           <div className="big-img">
-            <img src={item.src[index]} alt="" />
+            <a href={item.src[activeIndex]} className="MagicZoom">
+              <img className="MagicZoom" src={item.src[activeIndex]} alt="" />
+            </a>
           </div>
-
           <div className="box">
             <div className="row">
               <h2>{item.title}</h2>
@@ -69,6 +72,7 @@ const App = () => {
                   alt="img"
                   key={indx}
                   onClick={() => handleTab(indx)}
+                  onMouseEnter={() => handleTab(indx)}
                   onMouseOver={() => handleTab(indx)}
                 />
               ))}
