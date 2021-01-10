@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
+// import img1 from "/img1.jpg";
 
 const App = () => {
   const myRef = useRef();
@@ -10,9 +11,11 @@ const App = () => {
         _id: "1",
         title: "Nike Shoes",
         src: [
-          "https://www.upsieutoc.com/images/2021/01/07/img2.png",
-          "https://www.upsieutoc.com/images/2021/01/07/img3.png",
-          "https://www.upsieutoc.com/images/2021/01/07/img4.png",
+          "/img/img1.jpg",
+          "/img/img2.jpg",
+          "/img/img3.jpg",
+          "/img/img4.jpg",
+          "/img/img5.jpg",
         ],
         description: "UX desgining",
         content: "Welcome to our channel...",
@@ -46,11 +49,17 @@ const App = () => {
     <div className="App">
       {state.products.map((item) => (
         <div className="details" key={item._id}>
-          <div className="big-img">
-            <a href={item.src[activeIndex]} className="MagicZoom">
+          {JSON.stringify(activeIndex)}
+          <a
+            href={item.src[activeIndex]}
+            rel="selectors-effect-speed: 600;"
+            id="zoom"
+            className="MagicZoom"
+          >
+            <div className="big-img">
               <img className="MagicZoom" src={item.src[activeIndex]} alt="" />
-            </a>
-          </div>
+            </div>
+          </a>
           <div className="box">
             <div className="row">
               <h2>{item.title}</h2>
@@ -66,14 +75,16 @@ const App = () => {
             <p>{item.content}</p>
             <div className="thumb" ref={myRef}>
               {item.src.map((img, indx) => (
-                <img
-                  src={img}
-                  alt="img"
-                  key={indx}
-                  onClick={() => handleTab(indx)}
-                  onMouseEnter={() => handleTab(indx)}
-                  onMouseOver={() => handleTab(indx)}
-                />
+                <a href={img} data-image={img} title="...">
+                  <img
+                    src={img}
+                    alt="img"
+                    key={indx}
+                    onClick={() => handleTab(indx)}
+                    onMouseEnter={() => handleTab(indx)}
+                    onMouseOver={() => handleTab(indx)}
+                  />
+                </a>
               ))}
             </div>
             <button className="cart">Add to cart</button>
