@@ -11,7 +11,6 @@ const App = () => {
         title: "Nike Shoes",
         src: [
           "https://www.upsieutoc.com/images/2021/01/07/img2.png",
-          "https://www.upsieutoc.com/images/2021/01/07/img2.png",
           "https://www.upsieutoc.com/images/2021/01/07/img3.png",
           "https://www.upsieutoc.com/images/2021/01/07/img4.png",
         ],
